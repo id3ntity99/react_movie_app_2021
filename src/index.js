@@ -4,44 +4,45 @@ import ReactDOM from "react-dom";
 //css
 import "./index.css";
 
+const books = [
+  {
+    title: "System Design Interview",
+    author: "Alex Xu",
+    img: "https://images-na.ssl-images-amazon.com/images/I/61HlS-BupKL._AC_UL200_SR200,200_.jpg",
+  },
+  {
+    title: "Python Crash Course, 2nd Edition",
+    author: "Eric Matthes",
+    img: "https://images-na.ssl-images-amazon.com/images/I/81vmJCNCm6L._AC_UL200_SR200,200_.jpg",
+  },
+];
 function BookList() {
   return (
     <section className="bookList">
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
+      <Book
+        title={books[0].title}
+        author={books[0].author}
+        img={books[0].img}
+      />
+      <Book
+        title={books[1].title}
+        author={books[1].author}
+        img={books[1].img}
+      />
     </section>
   );
 }
 
-const Book = () => {
+function Book({ img, title, author }) {
+  //const { img, title, author } = props;
   return (
     <article className="book">
-      <Image />
-      <Title />
-      <Author />
+      <img src={img} alt="" />
+      <h1>{title}</h1>
+      <h4>{author}</h4>
+      <p></p>
     </article>
   );
-};
-
-const Image = () => {
-  return (
-    <img
-      src="https://images-na.ssl-images-amazon.com/images/I/61HlS-BupKL._AC_UL200_SR200,200_.jpg"
-      alt=""
-    />
-  );
-};
-
-const Title = () => <h1>Back to results System Design Interview</h1>;
-
-const Author = () => <h4>Alex Xu</h4>;
+}
 
 ReactDOM.render(<BookList />, document.getElementById("root"));
